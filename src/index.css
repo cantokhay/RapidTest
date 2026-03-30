@@ -1,0 +1,291 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --primary: #00b894;
+  --secondary: #0984e3;
+  --accent: #fdcb6e;
+  --dark: #2d3436;
+  --light: #dfe6e9;
+  --bg-color: #ffffff;
+  --surface: #f8f9fa;
+  --border-color: #dee2e6;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  /* Modal Specific (FM Style) */
+  --fm-bg: #15161A;
+  --fm-panel: #1C1D22;
+  --fm-border: #2F313A;
+  --fm-text: #f5f6fa;
+  --fm-muted: #8b8d96;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--dark);
+}
+
+.api-counter {
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 500;
+  background: var(--surface);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.api-counter .limit {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Dashboard Grid - Guidelines 30-32 */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+@media (max-width: 640px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+/* Team Card - Guidelines 23-28, 41-45 */
+.team-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.team-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.logo-container {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Shadow on hover requirement 44 */
+}
+
+.team-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+  color: var(--dark);
+}
+
+/* FM Style Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.fm-modal-content {
+  background: var(--fm-bg);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1100px;
+  height: 85vh;
+  display: flex;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+  border: 1px solid var(--fm-border);
+  overflow: hidden;
+}
+
+.fm-sidebar {
+  width: 64px;
+  background: #0D0E11;
+  border-right: 1px solid var(--fm-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  gap: 20px;
+}
+
+.fm-icon {
+  color: var(--fm-muted);
+  cursor: pointer;
+  opacity: 0.6;
+}
+.fm-icon:hover, .fm-icon.active { opacity: 1; color: var(--primary); }
+
+.fm-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fm-header {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--fm-border);
+}
+
+.fm-team-info { display: flex; align-items: center; gap: 16px; }
+.fm-header-logo { width: 48px; height: 48px; object-fit: contain; }
+.fm-title-group h2 { margin: 0; font-size: 20px; color: #fff; }
+.fm-title-group p { margin: 0; font-size: 12px; color: var(--fm-muted); }
+
+.fm-close {
+  background: var(--fm-panel);
+  border: 1px solid var(--fm-border);
+  color: #fff;
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fm-content-area {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.fm-tactics {
+  flex: 0 0 280px;
+  background: var(--fm-panel);
+  border-radius: 8px;
+  border: 1px solid var(--fm-border);
+  position: relative;
+}
+
+.fm-pitch {
+  height: 100%;
+  background: linear-gradient(180deg, #1A2A22 0%, #15201A 100%);
+  border: 2px solid #253F33;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.1);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.fm-squad-list {
+  flex: 1;
+  background: var(--fm-panel);
+  border-radius: 8px;
+  border: 1px solid var(--fm-border);
+  overflow-y: auto;
+}
+
+/* Squad Table - Guidelines 46-50, 130-134 */
+.fm-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.fm-table th {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fm-muted);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--fm-border);
+  position: sticky;
+  top: 0;
+  background: var(--fm-panel);
+  z-index: 5;
+}
+
+.fm-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--fm-border);
+  font-size: 14px;
+  color: #fff;
+}
+
+.fm-table tr:hover { background: rgba(255,255,255,0.03); }
+
+/* Zebra - Guidelines 47 but for dark mode */
+.fm-table tr:nth-child(even) { background: rgba(255,255,255,0.015); }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .fm-sidebar, .fm-tactics { display: none; }
+  .fm-modal-content { height: 100%; border-radius: 0; }
+  .fm-content-area { padding: 16px; }
+}
+
